@@ -10,14 +10,12 @@ class StreaksController < ApplicationController
   def get_streaks(username)
     stats = GithubStats.new(username)
 
+    data = stats.to_h
+
     {
       current_streaks: stats.streak.count,
-      data: stats.data.to_h
-    }
-  rescue
-    {
-      current_streaks: 0,
-      data: []
+      current_week: (Date.today.beginning_of_week..Date.today.end_of_week).map {|day| data[day] }
     }
   end
+
 end
