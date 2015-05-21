@@ -12,7 +12,7 @@ Preference
 How to run
 ------------------
 
-  $ bundle install --path .bundle
-  $ bundle install rake db:migrate RAILS\_ENV=production
-  $ bundle exec rails server
+    $ bundle install --path .bundle
+    $ bundle exec rake db:migrate RAILS\_ENV=production
+    $ bundle exec rails server
 
