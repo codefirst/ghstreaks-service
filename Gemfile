@@ -5,8 +5,12 @@ gem 'rails', '4.0.12'
 
 group :development, :test do
   gem 'sqlite3'
+end
+
+group :test do
   gem 'rspec-rails'
   gem 'quiet_assets'
+  gem 'rspec-its'
 end
 
 group :production do
