@@ -12,6 +12,7 @@ build:
                 echo "ruby version $(ruby --version) running"
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
+                cat config/database.yml
         - script:
             name: rspec
             code: bundle exec rake spec
