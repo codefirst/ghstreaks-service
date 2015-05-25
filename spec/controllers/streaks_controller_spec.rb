@@ -1,16 +1,21 @@
 require 'spec_helper'
 
-describe StreaksController do
+describe StreaksController, type: :controller do
 
   describe "GET 'index'" do
-    before do
-      res = double
-      res.stub(:body) { '<div class="contrib-column"><span class="contrib-number">2 days</span></div>' }
-      Faraday.stub(:get) { res }
+    before {
+      get 'index', user: 'mzp'
+    }
+    subject {
+      JSON.parse response.body
+    }
+
+    it "has current_streak" do
+      expect(subject).to have_key('current_streaks')
     end
-    it "last streak is not 0" do
-      get 'index', user: 'test'
-      response.body.should eq '{"current_streaks":2}'
+
+    it "has data" do
+      expect(subject).to have_key('data')
     end
   end
 
